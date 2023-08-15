@@ -8,6 +8,7 @@
 
 class PurchaseIntent < ApplicationRecord
   validates :user_id, :book_id, :price, :currency, :payment_method, presence: true
-  validates :price, numericality: { greater_than_or_equal_to: 0 }
-  validates :currency, inclusion: @currencies
+  validates :purchase_id, presence: true, uniqueness: true
+  validates :price, numericality: { greater_than_or_equal_to: 0 }, presence: true
+  validates :currency, inclusion: @currencies, presence: true
 end
